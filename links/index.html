@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect With Us - Megha Mandap</title>
+    <meta name="description" content="Follow Megha Mandap on social media for latest updates, event galleries, and special offers.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo and Header -->
+        <div class="header">
+            <a href="/" class="logo-link">
+                <h1 class="logo">Megha Mandap</h1>
+            </a>
+            <p class="tagline">Where Dreams Come Alive</p>
+            <p class="subtitle">Connect with us on social media</p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="links-container">
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/meghamandap" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                <div class="link-content">
+                    <div class="icon-wrapper">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="link-text">
+                        <h2>Instagram</h2>
+                        <p>Follow us for stunning venue photos & event highlights</p>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Facebook Link -->
+            <a href="https://facebook.com/Meghamandap" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                <div class="link-content">
+                    <div class="icon-wrapper">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="link-text">
+                        <h2>Facebook</h2>
+                        <p>Like our page for updates, offers & event bookings</p>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Google Maps Location -->
+            <a href="https://maps.app.goo.gl/8fDs6uoBieonyQeL6" target="_blank" rel="noopener noreferrer" class="social-link location">
+                <div class="link-content">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="link-text">
+                        <h2>Locate Us</h2>
+                        <p>Megha Mandap, NH 16, Bhadrak, Odisha</p>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Contact Info Cards -->
+            <div class="info-cards">
+                <a href="tel:+917008328583" class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 70083 28583</span>
+                </a>
+                <a href="mailto:meghamandap@gmail.com" class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Us</span>
+                </a>
+                <a href="/#book" class="info-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Book Event</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Megha Mandap. All rights reserved.</p>
+            <p class="footer-tagline">Where Every Celebration Becomes a Memory</p>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #0a0a0a 50%, #1a0033 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .logo-link:hover .logo {
+            transform: scale(1.05);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.1), rgba(193, 53, 132, 0.1));
+        }
+
+        .social-link.facebook:hover {
+            background: linear-gradient(135deg, rgba(24, 119, 242, 0.1), rgba(0, 90, 200, 0.1));
+        }
+
+        .social-link.location:hover {
+            background: linear-gradient(135deg, rgba(234, 67, 53, 0.1), rgba(66, 133, 244, 0.1));
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .instagram .icon-wrapper {
+            background: linear-gradient(135deg, #e1306c, #c13584, #833ab4, #fd1d1d);
+        }
+
+        .facebook .icon-wrapper {
+            background: #1877f2;
+        }
+
+        .location .icon-wrapper {
+            background: linear-gradient(135deg, #ea4335, #4285f4);
+        }
+
+        .social-link:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .link-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: #ffd700;
+        }
+
+        .link-text p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: #ffd700;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .info-card i {
+            font-size: 1.8rem;
+            color: #ffd700;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            color: #888;
+        }
+
+        .footer p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-tagline {
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .social-link {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .icon-wrapper {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .link-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .link-text p {
+                font-size: 0.8rem;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .social-link {
+                padding: 1rem;
+            }
+
+            .link-content {
+                gap: 1rem;
+            }
+
+            .icon-wrapper {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .link-text h2 {
+                font-size: 1.1rem;
+            }
+
+            .link-text p {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Smooth animations */
+        .social-link:nth-child(1) {
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .social-link:nth-child(2) {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .social-link:nth-child(3) {
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .info-cards {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+    </style>
+
+    <script>
+        // Add smooth hover effects and analytics tracking
+        document.querySelectorAll('.social-link, .info-card').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(255, 215, 0, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = (e.clientX - rect.left - 10) + 'px';
+                ripple.style.top = (e.clientY - rect.top - 10) + 'px';
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
