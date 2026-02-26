@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate Us – Megha Mandap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:  #c9a84c;
+      --goldl: #e8c97a;
+      --dark:  #1a1209;
+      --text:  #3a2e1a;
+      --muted: #7a6a4a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      padding: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── radial glow ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 80% 90%, rgba(201,168,76,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* ── floating stars bg ── */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .stars span {
+      position: absolute;
+      color: var(--gold);
+      font-size: 1rem;
+      opacity: 0;
+      animation: floatStar var(--dur) ease-in-out var(--del) infinite;
+    }
+    @keyframes floatStar {
+      0%   { opacity: 0; transform: translateY(0) scale(0.8); }
+      20%  { opacity: 0.35; }
+      80%  { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(-120px) scale(1.1); }
+    }
+
+    /* ── card ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,252,245,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 24px;
+      padding: 48px 40px 44px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.15);
+      animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .ornament {
+      color: var(--gold);
+      letter-spacing: 0.35em;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 18px;
+      opacity: 0.65;
+    }
+
+    /* logo */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .logo-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.5);
+      margin-bottom: 32px;
+    }
+
+    /* big stars display */
+    .big-stars {
+      font-size: 2.2rem;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+      display: block;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.7; }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: clamp(1.55rem, 4vw, 1.9rem);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    h1 span { color: var(--gold); }
+
+    p.sub {
+      color: rgba(255,252,245,0.55);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+
+    /* countdown — hidden until button clicked */
+    .countdown-wrap {
+      display: none;
+      margin-top: 16px;
+      margin-bottom: 4px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      padding: 14px 18px 12px;
+      animation: fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .countdown-wrap.active { display: block; }
+    .countdown-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.65);
+      margin-bottom: 10px;
+    }
+    .progress-track {
+      height: 4px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--goldl));
+      border-radius: 99px;
+      width: 100%;
+      transform-origin: left;
+    }
+    .progress-bar.animating {
+      animation: drain 3s linear forwards;
+    }
+    @keyframes drain { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+    .countdown-num {
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-top: 8px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    /* disabled state for button after click */
+    .btn.clicked {
+      opacity: 0.7;
+      cursor: default;
+      pointer-events: none;
+      animation: none;
+    }
+
+    /* CTA button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
+      color: var(--dark);
+      border: none;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+      margin-bottom: 14px;
+      animation: btnGlow 2s ease-in-out 1s infinite;
+    }
+    @keyframes btnGlow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(201,168,76,0.35); }
+      50%       { box-shadow: 0 4px 36px rgba(201,168,76,0.65); }
+    }
+    .btn:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .skip {
+      font-size: 0.78rem;
+      color: rgba(255,252,245,0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+    }
+    .skip:hover { color: rgba(255,252,245,0.6); }
+
+    /* divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 20px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.15);
+    }
+    .divider span { color: rgba(201,168,76,0.4); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+
+    /* Google button */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 13px 24px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,252,245,0.7);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      margin-bottom: 14px;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.22); }
+
+    .footer-note {
+      margin-top: 28px;
+      font-size: 0.72rem;
+      color: rgba(255,252,245,0.2);
+      letter-spacing: 0.04em;
+    }
+    .footer-note a { color: rgba(201,168,76,0.5); text-decoration: none; }
+    .footer-note a:hover { color: var(--gold); }
+
+    @media (max-width: 480px) {
+      .card { padding: 36px 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- floating stars -->
+<div class="stars" id="starsContainer"></div>
+
+<div class="card">
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <div class="logo">Megha Mandap</div>
+  <div class="logo-sub">Where Dreams Come Alive</div>
+
+  <span class="big-stars">★★★★★</span>
+
+  <h1>Enjoyed your<br/><span>celebration</span> with us?</h1>
+  <p class="sub">A quick Google review means the world to us — and helps other families discover their perfect venue.</p>
+
+  <!-- primary CTA + countdown (countdown hidden until click) -->
+  <button id="btnReview" class="btn" onclick="startCountdown()">
+    <svg width="20" height="20" viewBox="0 0 48 48">
+      <path fill="#1a1209" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/>
+    </svg>
+    <span id="btnLabel">Write a Google Review</span>
+  </button>
+
+  <!-- countdown — hidden by default, shown after click -->
+  <div class="countdown-wrap" id="countdownWrap">
+    <div class="countdown-label">Opening Google Reviews in</div>
+    <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="countdown-num" id="countdownNum"></div>
+  </div>
+
+  <a href="/" class="skip">← Back to Megha Mandap website</a>
+
+  <div class="divider"><span>or find us on</span></div>
+
+  <a href="https://maps.app.goo.gl/WEnqFX7FsetdMfim6" target="_blank" rel="noopener" class="btn-outline">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+    View on Google Maps
+  </a>
+
+  <div class="footer-note">
+    © 2025 Megha Mandap &nbsp;·&nbsp; <a href="/">meghamandap.com</a>
+  </div>
+</div>
+
+<script>
+  // ── Floating stars background ──
+  const starsContainer = document.getElementById('starsContainer');
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('span');
+    s.textContent = '★';
+    s.style.setProperty('--dur', (4 + Math.random() * 6) + 's');
+    s.style.setProperty('--del', (Math.random() * 8) + 's');
+    s.style.left   = (Math.random() * 100) + '%';
+    s.style.top    = (20 + Math.random() * 80) + '%';
+    s.style.fontSize = (0.6 + Math.random() * 1) + 'rem';
+    s.style.opacity  = '0';
+    starsContainer.appendChild(s);
+  }
+
+  const REDIRECT_URL = 'https://search.google.com/local/writereview?placeid=ChIJz0QTtDoLHDoRLtwsusuvm_w';
+
+  function startCountdown() {
+    const btn          = document.getElementById('btnReview');
+    const wrap         = document.getElementById('countdownWrap');
+    const bar          = document.getElementById('progressBar');
+    const numEl        = document.getElementById('countdownNum');
+    const label        = document.getElementById('btnLabel');
+
+    // Prevent double-click
+    if (btn.classList.contains('clicked')) return;
+
+    // Update button appearance
+    btn.classList.add('clicked');
+    label.textContent = '✓ Opening Google Reviews…';
+
+    // Show countdown box
+    wrap.classList.add('active');
+
+    // Start at 3
+    let seconds = 3;
+    numEl.textContent = seconds + ' seconds';
+
+    // Kick off the CSS progress bar drain over 3s
+    // Force reflow so animation starts fresh
+    bar.classList.remove('animating');
+    void bar.offsetWidth;
+    bar.style.animationDuration = seconds + 's';
+    bar.classList.add('animating');
+
+    const tick = setInterval(() => {
+      seconds--;
+      if (seconds > 0) {
+        numEl.textContent = seconds === 1 ? '1 second' : seconds + ' seconds';
+      } else {
+        clearInterval(tick);
+        numEl.textContent = 'Opening now…';
+        window.open(REDIRECT_URL, '_blank');
+      }
+    }, 1000);
+  }
+</script>
+</body>
+</html>
