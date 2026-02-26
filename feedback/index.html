@@ -377,7 +377,7 @@
       } else {
         clearInterval(tick);
         numEl.textContent = 'Opening now…';
-        window.open(REDIRECT_URL, '_blank');
+        window.location.href = REDIRECT_URL;
       }
     }, 1000);
   }
